@@ -1,23 +1,78 @@
+# ==========================
 # Python
+# ==========================
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual Environment
 venv/
+.venv/
+env/
+
+# Environment Variables
 .env
+.env.*
 
-# Dataset
-data/
-
-# Vector DB
-chroma_db/
-
-# User uploads
-uploads/
-
-# Jupyter
-.ipynb_checkpoints/
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
 
 # macOS
 .DS_Store
 
-# VS Code
-.vscode/
+# ==========================
+# Jupyter
+# ==========================
+.ipynb_checkpoints/
+
+# ==========================
+# Dataset
+# ==========================
+data/
+
+# ==========================
+# Vector Database
+# ==========================
+chroma_db/
+
+# ==========================
+# User Uploads
+# ==========================
+uploads/
+
+# ==========================
+# Logs
+# ==========================
+*.log
+
+# ==========================
+# Python Cache
+# ==========================
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ==========================
+# Build
+# ==========================
+build/
+dist/
+*.egg-info/
+
+# ==========================
+# Ollama (Optional)
+# Generated outputs only
+# ==========================
+*.gguf
+
+# ==========================
+# Temporary Files
+# ==========================
+*.tmp
+*.temp
