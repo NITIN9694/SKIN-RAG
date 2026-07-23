@@ -1,25 +1,38 @@
-from fastapi import APIRouter
-from pydantic import BaseModel
+import os
+import shutil
+import uuid
 
+from fastapi import APIRouter,File, HTTPException,UploadFile
+from app.service.skin_analysis_service import SkinAnalysisService
 
-from app.rag.retriever import SkinRetriever
 
 router = APIRouter()
+service = SkinAnalysisService()
 
-retriever = SkinRetriever()
+UPLOAD_DIR = "uploads"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-class SearchRequest(BaseModel):
-    query: str
-    
-@router.post("/search") 
-def search(request:SearchRequest):
-    docs = retriever.retrieve(request.query)
-    results = []
+@router.post("/analyze")
+async def analyze_skin(file: UploadFile = File(...)):
 
-    for doc in docs:
-        results.append({
-            "content": doc.page_content,
-            "metadata": doc.metadata
-        })
+    if not file.content_type.startswith("image/"):
+        raise HTTPException(
+            status_code=400,
+            detail="Please upload an image."
+        )
 
-    return {"results": results}      
+    extension = file.filename.split(".")[-1]
+    filename = f"{uuid.uuid4()}.{extension}"
+    image_path = os.path.join(UPLOAD_DIR, filename)
+
+    try:
+        with open(image_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+
+        result = service.analyze(image_path)
+
+        return result
+
+    finally:
+        if os.path.exists(image_path):
+            os.remove(image_path)
