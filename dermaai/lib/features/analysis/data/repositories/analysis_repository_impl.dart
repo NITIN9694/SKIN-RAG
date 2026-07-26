@@ -21,9 +21,11 @@ class AnalysisRepositoryImpl implements AnalysisRepository {
     final formData = FormData.fromMap({
       'file': await MultipartFile.fromFile(image.path, filename: fileName),
     });
-
+   print("ppConstants.analyzeEndpoint${AppConstants.analyzeEndpoint}");
     try {
+
       final response = await apiClient.postMultipart(AppConstants.analyzeEndpoint, formData);
+
       if (response.statusCode == 200 && response.data != null) {
         final result = AnalysisModel.fromJson(response.data, image.path);
         _mockedHistoryCollection.insert(0, result);

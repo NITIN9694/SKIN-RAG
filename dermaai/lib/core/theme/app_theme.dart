@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color primaryColor = Color(0xFF4CAF50);
-  static const Color secondaryColor = Color(0xFF81C784);
-  static const Color backgroundColorLight = Color(0xFFF7F9FA);
-  static const Color surfaceColorLight = Colors.white;
-  static const Color errorColor = Color(0xFFE53935);
+  // 🎨 Modern Medical AI Color Palette
+  static const Color primaryColor = Color(0xFF00A896);      // Deep Electric Teal
+  static const Color secondaryColor = Color(0xFF028090);    // Tech Cyan
+  static const Color accentColor = Color(0xFFF4A261);       // Soft Amber Accent
 
-  static const Color backgroundColorDark = Color(0xFF121416);
-  static const Color surfaceColorDark = Color(0xFF1E2225);
+  // Light Theme Colors
+  static const Color backgroundColorLight = Color(0xFFF8FAFC); // Slate Soft Background
+  static const Color surfaceColorLight = Colors.white;
+  static const Color surfaceBorderLight = Color(0xFFE2E8F0);
+
+  // Dark Theme Colors
+  static const Color backgroundColorDark = Color(0xFF0F172A);  // Deep Slate / Midnight
+  static const Color surfaceColorDark = Color(0xFF1E293B);    // Slate Dark Surface
+  static const Color surfaceBorderDark = Color(0xFF334155);
+
+  static const Color errorColor = Color(0xFFEF4444);          // Vivid Red
 
   static ThemeData get lightTheme {
     return ThemeData(
@@ -17,6 +25,7 @@ class AppTheme {
       colorScheme: const ColorScheme.light(
         primary: primaryColor,
         secondary: secondaryColor,
+        tertiary: accentColor,
         background: backgroundColorLight,
         surface: surfaceColorLight,
         error: errorColor,
@@ -24,22 +33,31 @@ class AppTheme {
       scaffoldBackgroundColor: backgroundColorLight,
       cardTheme: CardThemeData(
         color: surfaceColorLight,
-        elevation: 2,
-        shadowColor: Colors.black.withOpacity(0.04),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(color: surfaceBorderLight, width: 1),
+        ),
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: backgroundColorLight,
         elevation: 0,
         centerTitle: false,
-        iconTheme: IconThemeData(color: Colors.black12),
+        scrolledUnderElevation: 0,
+        iconTheme: IconThemeData(color: Color(0xFF0F172A)),
+        titleTextStyle: TextStyle(
+          color: Color(0xFF0F172A),
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          letterSpacing: -0.3,
+        ),
       ),
       textTheme: const TextTheme(
-        headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black, letterSpacing: -0.5),
-        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
-        titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
-        bodyLarge: TextStyle(fontSize: 16, color: Colors.black87, height: 1.5),
-        bodyMedium: TextStyle(fontSize: 14, color: Colors.black54, height: 1.4),
+        headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w800, color: Color(0xFF0F172A), letterSpacing: -0.8),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Color(0xFF0F172A), letterSpacing: -0.5),
+        titleLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Color(0xFF0F172A), letterSpacing: -0.2),
+        bodyLarge: TextStyle(fontSize: 16, color: Color(0xFF334155), height: 1.5),
+        bodyMedium: TextStyle(fontSize: 14, color: Color(0xFF64748B), height: 1.4),
       ),
     );
   }
@@ -51,6 +69,7 @@ class AppTheme {
       colorScheme: const ColorScheme.dark(
         primary: primaryColor,
         secondary: secondaryColor,
+        tertiary: accentColor,
         background: backgroundColorDark,
         surface: surfaceColorDark,
         error: errorColor,
@@ -59,19 +78,30 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: surfaceColorDark,
         elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(color: surfaceBorderDark, width: 1),
+        ),
       ),
       appBarTheme: const AppBarTheme(
         backgroundColor: backgroundColorDark,
         elevation: 0,
         centerTitle: false,
+        scrolledUnderElevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
+        titleTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          letterSpacing: -0.3,
+        ),
       ),
       textTheme: const TextTheme(
-        headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: -0.5),
-        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white),
-        titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
-        bodyLarge: TextStyle(fontSize: 16, color: Colors.white60, height: 1.5),
-        bodyMedium: TextStyle(fontSize: 14, color: Colors.white70, height: 1.4),
+        headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w800, color: Colors.white, letterSpacing: -0.8),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white, letterSpacing: -0.5),
+        titleLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white, letterSpacing: -0.2),
+        bodyLarge: TextStyle(fontSize: 16, color: Color(0xFFCBD5E1), height: 1.5),
+        bodyMedium: TextStyle(fontSize: 14, color: Color(0xFF94A3B8), height: 1.4),
       ),
     );
   }
