@@ -1,3 +1,4 @@
+<img width="1536" height="1024" alt="ChatGPT Image Jul 26, 2026, 06_36_59 PM" src="https://github.com/user-attachments/assets/00db4aa1-fe9e-435f-be7c-eebaf8667fef" />
 # 🩺 Skin-RAG: AI-Powered Skin Analysis using Vision + RAG + LLM
 
 ## 📌 Overview
